@@ -1,8 +1,8 @@
 randomise();
 var bgcolour = make_colour_rgb( 
-	random_range(0.3, 0.5) * 64,
-	random_range(0.3, 0.5) * 64,
-	random_range(0.3, 0.5) * 64
+	random_range(0.4, 0.8) * 64,
+	random_range(0.4, 0.8) * 64,
+	random_range(0.4, 0.8) * 64
 );
 
 var bgId = layer_get_id("Background");
