@@ -1,0 +1,87 @@
+Oct 1 11:34
+
+Starting a log because I may as well!
+Currently I have basic player movement, a weapon, and that's it...
+Now I'm gonna work on the level generator.
+
+Oct 1 15:14
+
+Just ate lunch after getting the basics of the level generator implemented.
+I have discovered that the way the generator works - storing pieces in BMP files - does not work with GM's HTML5 support. Annoying!
+
+Oct 1 15:21
+
+Level generator now randomly spawns zombies.
+
+Oct 1 15:37
+
+Added more pieces including arena2 and the jails.
+There's a bug in which 2-wide connectors leave a hole.
+
+Oct 1 15:39
+
+Moved most debug stuff under a global.debug variable
+
+Oct 1 15:41
+
+TAB and SHIFT now activate noclip and double speed in debug mode
+
+Oct 1 15:57
+
+Walls now generate an obj_wall entity too. This is ineffecient but greatly simplifies collision code...
+
+Oct 1 16:00
+
+Bullets now finally die upon hitting walls
+
+Oct 1 17:21
+
+Spent the last 1.5 hours fiddling with world gen and stuff. Think it's mostly okay now.
+Next up: motion planning and actual gameplay.
+
+Oct 1 18:00
+
+Been working on NPC and player interactions: zombies now pathfind towards the player and the player can now die.
+
+Oct 1 18:20
+
+Added a death screen, although it doesn't actually accept input.
+Probably gonna go for a walk now. Hope I don't get rained on.
+GameMaker is using 4 GB of RAM, wtf?
+
+Oct 1 20:52
+
+Went on an hour-long walk, got rained on.
+Came back and fixed the HTML5 version; pieces are now stored in a custom text-based format.
+New bug though: you can shoot yourself.
+
+Oct 1 20:55
+
+Think I've fixed that by comparing object IDs. Now I need to shower, then add more gameplay stuffs.
+Difficulty scaling and not spawning zombies on the player is a good start.
+Some debug info for HTML5 too.
+
+Oct 1 21:22 
+
+I have showered, and also discovered that my custom image decoder is bugged. BMP works fine, the text format
+is generating garbage.
+
+Oct 1 21:50
+
+AI now checks for distance /before/ line of sight, significantly improving performance
+
+Oct 1 22:00
+
+Reduced the room size from 4096 to 1024. 4096 was excessive.
+
+Oct 1 22:01
+
+Spawn is now placed dead centre.
+
+Oct 1 22:03
+
+Zombies now only spawn > 7 tiles away from spawn.
+
+Oct 2 00:15
+
+Finished the shader so it looks /less/ awful. Also at some point I redid the HUD.

@@ -1,0 +1,1 @@
+self.moveSpeed = 4;

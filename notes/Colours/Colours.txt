@@ -1,0 +1,12 @@
+GEN HINTS
+	FF00FF - connect 1-high piece here
+	FF00AA - connect 2-high piece here
+	AA00FF - connect 1-wide piece here
+	AA00AA - connect 2-wide piece here
+	
+TILES
+	808080 - Floor
+	FFFFFF - Wall
+	
+ENTITIES
+	0026FF - Player Spawn

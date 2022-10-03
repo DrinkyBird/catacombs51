@@ -1,0 +1,1 @@
+self.powerup = Powerups.accuracy;
