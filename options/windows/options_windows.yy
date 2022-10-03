@@ -4,7 +4,7 @@
   "name": "Windows",
   "option_windows_display_name": "Catacombs 51",
   "option_windows_executable_name": "${project_name}.exe",
-  "option_windows_version": "1.0.0.0",
+  "option_windows_version": "1.0.1.0",
   "option_windows_company_info": "DrinkyBird",
   "option_windows_product_info": "Catacombs 51",
   "option_windows_copyright_info": "",
