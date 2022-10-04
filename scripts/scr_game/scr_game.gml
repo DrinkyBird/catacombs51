@@ -85,7 +85,9 @@ function run_start() {
 	}
 	
 	randomise();
-	global.worldSeed = random_get_seed();
+	if (!global.worldSeedOverridden) {
+		global.worldSeed = random_get_seed();
+	}
 	
 	if (room == room_proc) {
 		room_restart();
@@ -94,6 +96,13 @@ function run_start() {
 	}
 	
 	settings_load();
+}
+
+function run_start_with_seed(seed) {
+	global.worldSeed = seed;
+	global.worldSeedOverridden = true;
+	
+	run_start();
 }
 
 function run_next_level() {

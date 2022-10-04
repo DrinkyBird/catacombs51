@@ -121,7 +121,10 @@ if (self.loading) {
 	{
 		var help = "ESC: Main Menu  ";
 		if (array_length(self.runs) > 0) {
-			help += "UP/W: Up  DOWN/S: Down";
+			help += "UP/W: Up  DOWN/S: Down  ";
+		}
+		if (!global.paused) {
+			help += "SPACE: Replay Seed";
 		}
 		
 		draw_set_colour(c_white);

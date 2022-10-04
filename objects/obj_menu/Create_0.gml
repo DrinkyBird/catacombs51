@@ -16,6 +16,7 @@ self.selection = 0;
 var startItem = {
 	label: "Start",
 	callback: function() {
+		global.worldSeedOverriden = false;
 		run_start();
 	}
 };
