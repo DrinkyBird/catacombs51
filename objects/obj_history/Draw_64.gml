@@ -18,6 +18,11 @@ if (self.loading) {
 	} else {
 		var xx = 50;
 		var yy = 50;
+		
+		if (self.selection > 0) {
+			draw_sprite_ext(spr_scrollarrow, 0, xx - 16 * 2 + 1, yy + 4 + 1, 1, 1, 0, c_black, 0.2);
+			draw_sprite_ext(spr_scrollarrow, 0, xx - 16 * 2, yy + 4, 1, 1, 0, c_white, 1);
+		}
 	
 		for (var i = self.selection; i < min(self.selection + 10, array_length(self.runs)); i++) {
 			var run = self.runs[i];
@@ -36,6 +41,11 @@ if (self.loading) {
 			str = date_datetime_string(run.date);
 			draw_text_shadow(xx + 10, yy, str);
 			yy += string_height(str);
+		}
+		
+		if (self.selection < array_length(self.runs) - 10) {
+			draw_sprite_ext(spr_scrollarrow, 0, xx - 16 * 1 + 1, yy - 4 + 1, 1, 1, 180, c_black, 0.2);
+			draw_sprite_ext(spr_scrollarrow, 0, xx - 16 * 1, yy - 4, 1, 1, 180, c_white, 1);
 		}
 
 		xx = 250;

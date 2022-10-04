@@ -16,6 +16,7 @@
     {"id":{"name":"snd_shootpistol","path":"sounds/snd_shootpistol/snd_shootpistol.yy",},"order":1,},
     {"id":{"name":"snd_player_hit","path":"sounds/snd_player_hit/snd_player_hit.yy",},"order":3,},
     {"id":{"name":"scr_mapgen","path":"scripts/scr_mapgen/scr_mapgen.yy",},"order":2,},
+    {"id":{"name":"spr_scrollarrow","path":"sprites/spr_scrollarrow/spr_scrollarrow.yy",},"order":2,},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},"order":8,},
     {"id":{"name":"obj_boss_zombie","path":"objects/obj_boss_zombie/obj_boss_zombie.yy",},"order":1,},
     {"id":{"name":"spr_player","path":"sprites/spr_player/spr_player.yy",},"order":0,},
