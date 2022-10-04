@@ -112,7 +112,9 @@
   "isEcma": false,
   "configs": {
     "name": "Default",
-    "children": [],
+    "children": [
+      {"name":"ldjam.com","children":[],},
+    ],
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"room_boot","path":"rooms/room_boot/room_boot.yy",},},

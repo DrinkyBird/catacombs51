@@ -66,7 +66,9 @@ array_push(self.items, helpItem);
 if (os_browser == browser_not_a_browser) {
 	array_push(self.items, historyItem);
 }
-array_push(self.items, ldPageItem);
+if (os_get_config() != "ldjam.com") {
+	array_push(self.items, ldPageItem);
+}
 if (os_browser == browser_not_a_browser) {
 	array_push(self.items, exitItem);
 }
