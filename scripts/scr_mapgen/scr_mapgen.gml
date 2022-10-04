@@ -221,12 +221,10 @@ function MapGenerator() constructor {
 		
 		var m = clamp(global.level / 2, 2, 10);
 		
-		for (var j = 0; j < m; j++) {
-			var nextPiece = pickConnectionPiece(p);
-			if (nextPiece == noone) {
-				 continue;
-			}
-		
+		var candidates = pickConnectionPieces(p);
+		for (var j = 0; j < ds_list_size(candidates); j++) {
+			var nextPiece = candidates[| j];
+			
 			for (var i = 0; i < array_length(nextPiece.connections[? p]); i++) {
 				var connC = nextPiece.connections[? p][i];
 				var connX = unpackX(connC);
@@ -251,6 +249,8 @@ function MapGenerator() constructor {
 			
 			if (success) break;
 		}
+		
+		ds_list_destroy(candidates);
 	}
 	
 	static pickSpawn = function() {
@@ -264,17 +264,25 @@ function MapGenerator() constructor {
 		return global.pieces[? spawns[irandom_range(0, array_length(spawns) - 1)]];
 	}
 	
-	static pickConnectionPiece = function(connectorType) {
+	static pickConnectionPieces = function(connectorType) {
 		 if (!ds_map_exists(global.piecesWithPixels, connectorType)) {
 			 return noone;
 		 }
 		 
-		 var candidate = noone;
-		 do {
-			candidate = global.piecesWithPixels[? connectorType][| irandom_range(0, ds_list_size(global.piecesWithPixels[? connectorType]) - 1)];
-		 } until (string_count("spawn", candidate.filename) == 0);
+		 var candidates = ds_list_create();
 		 
-		 return candidate;
+		 for (var i = 0; i < ds_list_size(global.piecesWithPixels[? connectorType]); i++) {
+			 var piece = global.piecesWithPixels[? connectorType][| i];
+			 if (ds_list_find_index(candidates, piece) != -1 || string_count("spawn", piece.filename) != 0) {
+				continue;
+			 }
+			 
+			ds_list_add(candidates, piece);
+		 }
+		 
+		 ds_list_shuffle(candidates);
+		 
+		 return candidates;
 	}
 	
 	static openWalls = function() {
