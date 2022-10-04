@@ -34,6 +34,13 @@ var helpItem = {
 	}
 };
 
+var historyItem = {
+	label: "History",
+	callback: function() {
+		room_goto(room_history);
+	}
+};
+
 var ldPageItem = {
 	label: "ldjam.com",
 	callback: function() {
@@ -55,6 +62,9 @@ if (global.paused) {
 	array_push(self.items, startItem);
 }
 array_push(self.items, helpItem);
+if (os_browser == browser_not_a_browser) {
+	array_push(self.items, historyItem);
+}
 array_push(self.items, ldPageItem);
 if (os_browser == browser_not_a_browser) {
 	array_push(self.items, exitItem);

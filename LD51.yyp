@@ -83,6 +83,7 @@
     {"id":{"name":"obj_chaingun","path":"objects/obj_chaingun/obj_chaingun.yy",},"order":3,},
     {"id":{"name":"snd_tick","path":"sounds/snd_tick/snd_tick.yy",},"order":8,},
     {"id":{"name":"snd_player_die","path":"sounds/snd_player_die/snd_player_die.yy",},"order":2,},
+    {"id":{"name":"obj_history","path":"objects/obj_history/obj_history.yy",},"order":4,},
     {"id":{"name":"font_debug","path":"fonts/font_debug/font_debug.yy",},"order":0,},
     {"id":{"name":"snd_levelend","path":"sounds/snd_levelend/snd_levelend.yy",},"order":0,},
     {"id":{"name":"obj_shotgunbullet","path":"objects/obj_shotgunbullet/obj_shotgunbullet.yy",},"order":4,},
@@ -90,6 +91,7 @@
     {"id":{"name":"obj_damagedwall","path":"objects/obj_damagedwall/obj_damagedwall.yy",},"order":4,},
     {"id":{"name":"spr_gun_zombie","path":"sprites/spr_gun_zombie/spr_gun_zombie.yy",},"order":3,},
     {"id":{"name":"spr_cursor","path":"sprites/spr_cursor/spr_cursor.yy",},"order":1,},
+    {"id":{"name":"room_history","path":"rooms/room_history/room_history.yy",},"order":4,},
     {"id":{"name":"spr_damageup","path":"sprites/spr_damageup/spr_damageup.yy",},"order":7,},
     {"id":{"name":"room_boot","path":"rooms/room_boot/room_boot.yy",},"order":1,},
     {"id":{"name":"room_help","path":"rooms/room_help/room_help.yy",},"order":3,},
@@ -116,6 +118,7 @@
     {"roomId":{"name":"room_proc","path":"rooms/room_proc/room_proc.yy",},},
     {"roomId":{"name":"room_menu","path":"rooms/room_menu/room_menu.yy",},},
     {"roomId":{"name":"room_help","path":"rooms/room_help/room_help.yy",},},
+    {"roomId":{"name":"room_history","path":"rooms/room_history/room_history.yy",},},
   ],
   "Folders": [
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Fonts","folderPath":"folders/Fonts.yy","order":7,},

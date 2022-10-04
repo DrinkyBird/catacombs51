@@ -123,6 +123,11 @@ function run_save() {
 		return;
 	}
 	
+	// ???
+	if (global.runId == "") {
+		return;
+	}
+	
 	if (global.score > global.highScore) {
 		global.highScore = global.score;
 	}
