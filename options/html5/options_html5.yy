@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "HTML5",
   "option_html5_browser_title": "Catacombs 51",
-  "option_html5_version": "1.0.1.0",
+  "option_html5_version": "1.0.2.0",
   "option_html5_foldername": "ld51",
   "option_html5_outputname": "index.html",
   "option_html5_splash_png": "splash.png",
