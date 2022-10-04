@@ -48,7 +48,7 @@ if (self.loading) {
 			draw_sprite_ext(spr_scrollarrow, 0, xx - 16 * 1, yy - 4, 1, 1, 180, c_white, 1);
 		}
 
-		xx = 250;
+		xx = 350;
 		yy = 50;
 		{
 			var run = self.runs[self.selection];
