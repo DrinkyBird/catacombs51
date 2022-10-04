@@ -100,6 +100,9 @@ function MapGenerator() constructor {
 			1.0
 		];
 		
+		random_set_seed(global.worldSeed + global.level);
+		
+		print("Seed: %1", global.worldSeed + global.level);
 		print("1: create spawn");
 		createSpawn();
 		

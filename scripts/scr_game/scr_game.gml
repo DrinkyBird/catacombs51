@@ -84,6 +84,9 @@ function run_start() {
 		array_push(global.powerups, 0);
 	}
 	
+	randomise();
+	global.worldSeed = random_get_seed();
+	
 	if (room == room_proc) {
 		room_restart();
 	} else {
@@ -130,6 +133,7 @@ function run_save() {
 	ini_write_real(sect, "date", global.runDateTime);
 	ini_write_real(sect, "score", global.score);
 	ini_write_real(sect, "level", global.level);
+	ini_write_real(sect, "worldSeed", global.worldSeed);
 	
 	for (var i = 0; i < array_length(global.weapons); i++) {
 		ini_write_real(sect, string_args("weapon%1", i), global.weapons[i]);
