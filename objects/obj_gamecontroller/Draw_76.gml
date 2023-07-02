@@ -1,1 +1,1 @@
-reconf_world_shader();
+//reconf_world_shader();

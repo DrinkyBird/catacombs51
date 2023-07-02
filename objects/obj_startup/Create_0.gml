@@ -1,5 +1,5 @@
 self.alarm[1] = 2;
-global.debug = false;
+global.debug = true;
 global.mp = noone;
 global.worldColour = [ 1, 1, 1, 1 ];
 global.paused = false;

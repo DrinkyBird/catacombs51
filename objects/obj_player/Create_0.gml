@@ -14,3 +14,5 @@ self.health = self.maxHealth;
 for (var i = 0; i < Weapons.count; i++) {
 	array_push(self.lastFireTime, 0);
 }
+
+self.alarm[4] = 5;

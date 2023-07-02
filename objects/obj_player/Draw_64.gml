@@ -1,3 +1,4 @@
+return;
 if (global.debug) {
 	draw_set_alpha(1);
 	draw_set_font(font_debug);

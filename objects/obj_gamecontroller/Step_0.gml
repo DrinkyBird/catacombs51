@@ -17,5 +17,5 @@ if (instance_exists(obj_player) && obj_player.health > 0) {
 	self.endScreen = true;
 }
 
-cursor_sprite = spr_cursor;
+//ycursor_sprite = spr_cursor;
 window_set_cursor(cr_none) ;

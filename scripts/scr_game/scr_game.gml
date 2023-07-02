@@ -181,3 +181,5 @@ function floatytext(xx, yy, colour, text) {
 	o.colour = colour;
 	o.text = text;
 }
+
+global.lastPlaced = 0;

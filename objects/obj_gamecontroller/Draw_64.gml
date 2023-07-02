@@ -1,3 +1,5 @@
+return;
+
 draw_set_alpha(1);
 
 if (global.debug) {

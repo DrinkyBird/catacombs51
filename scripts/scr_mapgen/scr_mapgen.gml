@@ -87,6 +87,7 @@ function MapGenerator() constructor {
 	grid = ds_grid_create(gw, gh);
 	neededConnections = ds_queue_create();
 	itemPoints = ds_queue_create();
+	placed = 0;
 	
 	static run = function() {
 		randomise();
@@ -107,30 +108,38 @@ function MapGenerator() constructor {
 		createSpawn();
 		
 		print("2: resolve connections");
+		global.placed=0;
 		while (ds_queue_size(neededConnections) > 0) {
+			if (global.lastPlaced == 0) {
+				global.lastPlaced++;
+				break;
+			}
 			var val = ds_queue_dequeue(neededConnections);
 			var cx = unpackX(val);
 			var cy = unpackY(val);
 			resolveConnection(cx, cy);
+			if (placed == global.lastPlaced) { global.lastPlaced++; break; }
 		}
 		
 		//print("3: open walls");
 		//openWalls();
 		
 		print("4: seal holes");
-		sealHoles();
+		//sealHoles();
 		
 		print("5: random replace");
-		randomReplace();
+		//randomReplace();
 		
 		print("6: place tiles and objects");
 		placeTiles();
 		
 		print("7: place items");
-		placeItems();
+		//placeItems();
 		
 		print("8: place zombies");
-		spawnZombies();
+		//spawnZombies();
+		
+		//obj_player.visible = false;
 	}
 	
 	static cleanup = function() { 
@@ -250,7 +259,11 @@ function MapGenerator() constructor {
 				}
 			}
 			
-			if (success) break;
+			if (success) {
+				placed++;
+				global.placed = placed;
+				break;
+			}
 		}
 		
 		ds_list_destroy(candidates);
@@ -385,6 +398,8 @@ function MapGenerator() constructor {
 		tilemap_clear(wallsTm, 0);
 		tilemap_clear(floorTm, 0);
 		
+		var disableObjects = false;
+		
 		for (var xx = 0; xx < gw; xx++)
 		for (var yy = 0; yy < gh; yy++) {
 			var col = grid[# xx, yy];
@@ -404,49 +419,49 @@ function MapGenerator() constructor {
 				}
 				
 				case TILE_JAILBARS: {
-					instance_create_layer(xx * 16 + 8, yy * 16 + 8, "Instances", obj_prison_bars);
+					if (!disableObjects) instance_create_layer(xx * 16 + 8, yy * 16 + 8, "Instances", obj_prison_bars);
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
 				case TILE_JAILBARS_HORIZ: {
-					var i = instance_create_layer(xx * 16 + 8, yy * 16 + 8, "Instances", obj_prison_bars);
-					i.image_angle = 90;
+					if (!disableObjects) {var i = instance_create_layer(xx * 16 + 8, yy * 16 + 8, "Instances", obj_prison_bars);
+					i.image_angle = 90;}
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
 				case TILE_TOILET_DOWN: {
-					var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_toilet);
-					i.image_index = 0;
+					if (!disableObjects) {var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_toilet);
+					i.image_index = 0;}
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
 				case TILE_TOILET_UP: {
-					var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_toilet);
-					i.image_index = 1;
+					if (!disableObjects) {var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_toilet);
+					i.image_index = 1;}
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
 				case TILE_BED_DOWN: {
-					var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_bed);
-					i.image_index = 0;
+					if (!disableObjects) {var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_bed);
+					i.image_index = 0;}
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
 				case TILE_BED_UP: {
-					var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_bed);
-					i.image_index = 1;
+					if (!disableObjects) {var i = instance_create_layer(xx * 16, yy * 16, "Instances", obj_prison_bed);
+					i.image_index = 1;}
 					mp_grid_add_cell(global.mp, xx, yy);
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				
@@ -471,7 +486,7 @@ function MapGenerator() constructor {
 				}
 				
 				case TILE_ITEMSPAWNER: {
-					tilemap_set(floorTm, 3, xx, yy);
+					if (!disableObjects) tilemap_set(floorTm, 3, xx, yy);
 					ds_queue_enqueue(itemPoints, packCoord(xx, yy));
 					break;
 				}
@@ -484,9 +499,9 @@ function MapGenerator() constructor {
 				case TILE_DECOR: {
 					var types = [ obj_pillar, obj_damagedwall ];
 					
-					var i = instance_create_layer(xx * 16, yy * 16, "Decor", types[irandom_range(0, array_length(types) - 1)]);
-					i.image_index = 1;
-					tilemap_set(floorTm, 2, xx, yy);
+					if (!disableObjects) {var i = instance_create_layer(xx * 16, yy * 16, "Decor", types[irandom_range(0, array_length(types) - 1)]);
+					i.image_index = 1;}
+					if (!disableObjects) tilemap_set(floorTm, 2, xx, yy);
 					break;
 				}
 				

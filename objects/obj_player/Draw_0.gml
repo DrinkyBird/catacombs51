@@ -1,5 +1,5 @@
 if (self.health > 0) {
-	draw_self();
+	//draw_self();
 }
 
 if (false) {
